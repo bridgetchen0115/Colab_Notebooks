@@ -2,12 +2,20 @@
 ## Description of the data
 > *When it has been collected? Who did collect it?  What is the source? How large is your data? Do you have any links to the data? How many records does it have? How many features columns)? Structured or Unstructured?* 
 
-The “Trending YouTube Video Statistics” dataset was collected by Kaggle user Mitchell J 6 months ago. The link to the data source is [here](https://www.kaggle.com/datasnaek/youtube-new). The dataset was collected using the YouTube API. It includes a list of the top trending videos of 10 different countries and regions, which is put into separate files. Each CSV file includes 16 columns including video id, trending dates, video titles, channel titles, category ids, publish time, tags, views, likes and dislikes, the number of comments, thumbnail link, whether the comments or ratings are disabled, or video removed, and video description. And in each CSV file, there are up to 200 trending videos pulled from YouTube each day. The dataset in CSV files is structured, however, unstructured in JSON files. Each structured CSV file includes a column named category_id, which is associated with categories stored in the unstructured JSON file. 
+The “Trending YouTube Video Statistics” dataset was collected by Kaggle user Mitchell J 6 months ago. The link to the data source is [Kaggle](https://www.kaggle.com/datasnaek/youtube-new). The dataset was collected using the YouTube API. It includes a list of the top trending videos of 10 different countries and regions, which is put into separate files. Each CSV file includes 16 columns including video id, trending dates, video titles, channel titles, category ids, publish time, tags, views, likes and dislikes, the number of comments, thumbnail link, whether the comments or ratings are disabled, or video removed, and video description. And in each CSV file, there are up to 200 trending videos pulled from YouTube each day. The dataset in CSV files is structured, however, unstructured in JSON files. Each structured CSV file includes a column named category_id, which is associated with categories stored in the unstructured JSON file. 
 
 ## Problem Statement
 > *What are you trying to do? What is your aim? What are your research questions?*
 
-1. What’s the list of the trending videos? (Yuki) 
+1. What’s the list of the most trending videos?\
+Based on the maximum views, likes and comments in each video's trending period, we get three tables in the code section indicating the list of the most trending videos. If we only look at the top 20 video ids based on those three criteria, shown in the table below, they are quite different. \
+\
+![](https://i.imgur.com/LgkaeiV.png)\
+\
+The reason behind the results is mainly that some of the top videos disabled their rating or comment system *(which could be seen from the charts in the code section)*, so their total number of comments or likes is 0. It could be also concluded from the confusion matrix, where most of the ratings and comments are not disabled but quite a few disabled both their ratings and comments.\
+Based on the reason, we shouldn't use total likes or comments as our criteria for the most trending videos. Instead, we will use total views to further filter our the list of the most trending videos for future analysis. 
+\
+<img src="https://raw.githubusercontent.com/aoyingxue/Colab_Notebooks/master/big_data_final/big_data_final_results/Confusion%20Matrix.png" width="400" height="250" />
 
 2. Which video remained the most on the most trending-videos list?--3 countries （CA, USA, GB) (Bridget) 
 
